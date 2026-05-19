@@ -1,8 +1,9 @@
-int TOP_PAD = 60;
-int SQUARE_SIZE = 45;
+static int TOP_PAD = 60;
+static int SQ_SZ = 45;
 
 void setup() {
-  size(SQUARE_SIZE * 9, SQUARE_SIZE * 9 + TOP_PAD);
+  //size(SQ_SZ * 9, SQ_SZ * 9 + TOP_PAD);
+  size(405, 465);
   SudokuBoard board = new SudokuBoard();
 }
 

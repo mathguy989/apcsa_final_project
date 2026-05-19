@@ -15,4 +15,10 @@ class SudokuSquare {
     this.y = y;
     this.locked = locked;
   }
+  
+  void drawSquare() {
+    stroke(0);
+    square(x, y, Sudoku.SQ_SZ);
+    
+  }
 }
