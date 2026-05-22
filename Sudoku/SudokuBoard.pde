@@ -1,6 +1,10 @@
+import java.util.HashSet;
+import java.util.Set;
+
 class SudokuBoard {
   SudokuSquare[][] board;
   SudokuSquare selection;
+  ArrayList<Integer> solvedList;
   
   SudokuBoard() {
     board = new SudokuSquare[9][9];
@@ -27,10 +31,42 @@ class SudokuBoard {
   }
   
   void inputVal(int val) {
+    
     selection.value = val;
   }
   
   boolean hasSelection() {
     return (selection != null);
   }
+  
+  
+  boolean boardLegal() {
+    
+    for (int i = 0; i < board.length; i++) {
+      if (!rowLegal(i)) return false;
+      if (!colLegal(i)) return false;
+    }
+    return false;
+  }
+  boolean rowLegal(int row) {
+    ArrayList<Integer> group = new ArrayList<>();
+    for (int i = 0; i < board[0].length; i++){
+      if (board[row][i].value != 0) group.add(board[row][i].value);
+    }
+    Set<Integer> s = new HashSet<>();
+      for (Integer num : group) {
+         if (!s.add(num)) return false;
+      }
+  }
+  boolean colLegal(int col) {
+    ArrayList<Integer> group = new ArrayList<>();
+    for (int i = 0; i < board.length; i++) {
+      if (board[i][col].value != 0) group.add(board[i][col].value);
+    }
+    Set<Integer> s = new HashSet<>();
+      for (Integer num : group) {
+         if (!s.add(num)) return false;
+      }
+  }
+  
 }
