@@ -45,8 +45,10 @@ class SudokuBoard {
     for (int i = 0; i < board.length; i++) {
       if (!rowLegal(i)) return false;
       if (!colLegal(i)) return false;
+      if (!boxLegal(i / 3, i % 3)) return false;
+      
     }
-    return false;
+    return true;
   }
   boolean rowLegal(int row) {
     ArrayList<Integer> group = new ArrayList<>();
@@ -57,6 +59,7 @@ class SudokuBoard {
       for (Integer num : group) {
          if (!s.add(num)) return false;
       }
+    return true;
   }
   boolean colLegal(int col) {
     ArrayList<Integer> group = new ArrayList<>();
@@ -67,6 +70,21 @@ class SudokuBoard {
       for (Integer num : group) {
          if (!s.add(num)) return false;
       }
+    return true;
+  }
+  boolean boxLegal(int boxX, int boxY) {
+    ArrayList<Integer> group = new ArrayList<>();
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+      int value = board[3 * boxY + j][3 * boxX + i].value;
+      if (value != 0) group.add(value);
+    }
+    }
+    Set<Integer> s = new HashSet<>();
+      for (Integer num : group) {
+         if (!s.add(num)) return false;
+      }
+    return true;
   }
   
 }
