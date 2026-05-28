@@ -6,11 +6,11 @@ class SudokuBoard {
   SudokuSquare selection;
   ArrayList<Integer> solvedList;
   
-  SudokuBoard() {
+  SudokuBoard(boolean locked) {
     board = new SudokuSquare[9][9];
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
-        board[i][j] = new SudokuSquare(j * SQ_SZ, i * SQ_SZ + TOP_PAD, false);
+        board[i][j] = new SudokuSquare(j, i, locked);
       }
     }
   }
@@ -27,6 +27,7 @@ class SudokuBoard {
   
   void updateSelection() {
     if (mouseY < TOP_PAD) selection = null;
+    else if (board[(mouseY - TOP_PAD) / SQ_SZ][mouseX / SQ_SZ].locked) selection = null;
     else selection = board[(mouseY - TOP_PAD) / SQ_SZ][mouseX / SQ_SZ];
   }
   
@@ -86,5 +87,7 @@ class SudokuBoard {
       }
     return true;
   }
+  
+  
   
 }
