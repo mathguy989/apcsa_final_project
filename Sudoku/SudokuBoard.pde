@@ -74,7 +74,7 @@ class SudokuBoard {
     return true;
   }
   boolean boxLegal(int boxX, int boxY) {
-    ArrayList<Integer> group = new ArrayList<>();
+    ArrayList<Integer> group = new ArrayList<>(); //<>//
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
       int value = board[3 * boxY + j][3 * boxX + i].value;

@@ -18,7 +18,7 @@ void draw() {
 
 void mouseClicked() {
   board.updateSelection();
-  if (!board.hasSelection()) System.out.println(board.boardLegal());
+  if (!board.hasSelection()) SudokuGenerator.fillCells(board);
 }
 
 void keyPressed() {

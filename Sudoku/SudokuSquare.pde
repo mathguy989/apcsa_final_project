@@ -24,7 +24,7 @@ class SudokuSquare {
     textSize(SQ_SZ / 2);
     textAlign(CENTER, CENTER);
     text(value != 0 ? 
-    String.valueOf(value) : "", x * Sudoku.SQ_SZ, y * Sudoku.SQ_SZ, SQ_SZ, SQ_SZ);
+    String.valueOf(value) : "", x * Sudoku.SQ_SZ, y * Sudoku.SQ_SZ + Sudoku.TOP_PAD, SQ_SZ, SQ_SZ);
     
   }
 }
